@@ -1,0 +1,15 @@
+.footer {
+  height: 100px;
+  width: 100%;
+  background-color: #1aa099;
+  position: absolute;
+  right: 0;
+  margin-top: 50px;
+  left: 0;
+  
+  .footer-title {
+    color: rgba(256,256,256, 0.7);
+    font-size: 14px;
+    font-family: "Gotham SSm A", sans-serif;
+  }
+}

@@ -1,0 +1,15 @@
+@media (min-width: 320px) {
+  .feed__container {
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+  }
+}
+
+@media (min-width: 960px) {
+  .feed__container {
+    flex-direction: row;
+    padding: 50px 10px 30px;
+    align-items: start;
+  }
+}

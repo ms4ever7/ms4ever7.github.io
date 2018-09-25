@@ -1,0 +1,36 @@
+.categories__wrapper {
+  width: 100%;
+  padding-right: 15px;
+  max-width: 250px;
+  
+  .categories__wrapper--trigger {
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #4b4b4b;
+  
+    .categories__list-title {
+      padding-top: 15px;
+      font-weight: $font-weight-bold;
+    }
+  }
+  
+  .Collapsible__contentInner {
+    padding-top: 10px;
+  
+    .categories__list-item {
+      cursor: pointer;
+      color: #4b4b4b;
+      font-size: 14px;
+      margin-left: 20px;
+      margin-top: 15px;
+
+      &.list-item--selected {
+        color: $black;
+        font-weight: $font-weight-bold;
+        background: transparent;
+      }
+    }
+  }
+}
