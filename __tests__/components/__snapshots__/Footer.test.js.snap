@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render correctly 1`] = `
+<footer
+  className="footer layout-column layout-align-center-center"
+>
+  <div
+    className="footer-title"
+  >
+    © Designed and developed by ms4ever7 
+  </div>
+</footer>
+`;

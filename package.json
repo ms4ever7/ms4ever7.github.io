@@ -1,7 +1,8 @@
 {
   "name": "ms4ever7",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "http://ms4ever7.github.io",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
@@ -29,6 +30,7 @@
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
+    "redux-testkit": "^1.0.6",
     "redux-thunk": "^2.3.0",
     "resolve": "1.6.0",
     "seamless-immutable": "^7.1.4",
@@ -43,8 +45,10 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest __tests__",
+    "test:watch": "jest --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

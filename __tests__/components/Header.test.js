@@ -1,10 +1,9 @@
 import React from 'react';
-import Header from '../.././src/components/Header';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import Adapter from 'enzyme-adapter-react-16';
+import Header from '../../src/components/Header';
 
-describe('ExploreStrainsList', () => {
+describe('Header', () => {
   let wrapper;
 
 
@@ -16,4 +15,12 @@ describe('ExploreStrainsList', () => {
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 
+  it('has appropriate classnames', () => {
+    const wrapper = shallow(<Header />);
+
+    expect(wrapper.find('.header').exists()).toBeTruthy();
+    expect(wrapper.find('.header__title').exists()).toBeTruthy();
+    expect(wrapper.find('.header__separate-line').exists()).toBeTruthy();
+    expect(wrapper.find('.header__subtitle').exists()).toBeTruthy();
+  });
 });

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExploreStrainsList should render correctly 1`] = `
+<header
+  className="header layout-column layout-align-start-center"
+>
+  <h1
+    className="header__title"
+  >
+    Royal Shoes
+  </h1>
+  <hr
+    className="header__separate-line"
+  />
+  <h3
+    className="header__subtitle"
+  >
+    Choose your dream and get up
+  </h3>
+</header>
+`;
+
+exports[`Header should render correctly 1`] = `
+<header
+  className="header layout-column layout-align-start-center"
+>
+  <h1
+    className="header__title"
+  >
+    Royal Shoes
+  </h1>
+  <hr
+    className="header__separate-line"
+  />
+  <h3
+    className="header__subtitle"
+  >
+    Choose your dream and get up
+  </h3>
+</header>
+`;
