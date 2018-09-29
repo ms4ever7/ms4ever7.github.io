@@ -5,7 +5,7 @@ const initialState = {
   selectedColors: []
 };
 
-const filters = (state = initialState, action) => {
+const filters = (state = initialState, action = {}) => {
   switch (action.type) {
     case SET_PRODUCT_CATEGORY:
       let { selectedCategories } = state;

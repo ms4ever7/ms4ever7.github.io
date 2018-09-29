@@ -8,7 +8,7 @@
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    color: #4b4b4b;
+    color: $main-text-color;
   
     .categories__list-title {
       padding-top: 15px;
@@ -21,7 +21,7 @@
   
     .categories__list-item {
       cursor: pointer;
-      color: #4b4b4b;
+      color: $main-text-color;
       font-size: 14px;
       margin-left: 20px;
       margin-top: 15px;

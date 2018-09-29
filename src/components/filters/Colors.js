@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Collapsible from 'react-collapsible';
 
 import { selectColor } from '../../redux/actions/filters';
@@ -8,13 +9,21 @@ const DEFAULT_CLASS_NAME = 'colors__list-item';
 const COLORS_LIST = ['White', 'Black', 'Red', 'Grey', 'LightSeaGreen', 'Beige', 'Yellow', 'SpringGreen', 'Blue', 'DarkGreen', 'DarkBlue', 'Orange', 'Pink', "Brown", "Wheat" ]
 
 class Colors extends Component {
+  static propTypes = {
+    selectedColors: PropTypes.array,
+    selectColor: PropTypes.func
+  }
+
+  static defaultProps = {
+    selectedColors: [],
+    selectColor: () => {}
+  }
+
   state = {
     colorsOpened: false
   }
 
-  toggleColor = color => {
-    this.props.selectColor(color);
-  }
+  toggleColor = color => this.props.selectColor(color);
 
   get triggerElement() {
     const { colorsOpened } = this.state;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { fetchProducts } from '../redux/actions/products';
 
@@ -7,28 +8,37 @@ import NoResultsFound from './NoResultsFound';
 import Product from './Product';
 
 class Products extends Component {
-  state = {
-
+  static propTypes = {
+    products: PropTypes.array,
+    selectedCategories: PropTypes.array,
+    selectedColors: PropTypes.array,
+    fetchProducts: PropTypes.func
   }
 
-  componentWillMount() {
+  static defaultProps = {
+    products: [],
+    selectedCategories: [],
+    selectedColors: [],
+    fetchProducts: () => {}
+  }
+
+  componentDidMount() {
     this.props.fetchProducts();
   }
 
   get appropriateItems() {
     const { products, selectedCategories, selectedColors } = this.props;
 
-    return products.filter(product => {
-      const { category, colors } = product
+    return products.filter((product) => {
+      const { category, colors } = product;
 
       if ((selectedCategories.length && !selectedCategories.includes(category))
         || (selectedColors.length && !selectedColors.every(color => colors.includes(color)))) {
         return;
       }
-        
+
       return product;
     });
-    
   }
 
 
@@ -41,8 +51,6 @@ class Products extends Component {
 
     return this.appropriateItems.map(item => <Product key={item.id} data={item} />);
   }
-
-  
 
   render() {
     const { products } = this.props;

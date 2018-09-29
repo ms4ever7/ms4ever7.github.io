@@ -1,32 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import convertColorNameToHex from 'convert-css-color-name-to-hex';
 
 import { setPrimaryItem } from '../redux/actions/products';
 
 class Product extends Component {
-  getColors = (colors, primaryColor, itemId) => {
-    return colors.map((color, index) => {
-      const DEFAULT_CLASS_NAME = 'item--color__block';
-      let className = DEFAULT_CLASS_NAME;
-
-
-      if (color.toLowerCase() === primaryColor.toLowerCase()) {
-        className = `${DEFAULT_CLASS_NAME} selected`;
-      }
-
-      return <span
-        key={index}
-        className={className}
-        style={{ backgroundColor: convertColorNameToHex(color) }}
-        onClick={() => this.props.setPrimaryItem(color, itemId)}
-      >
-      </span>
-    });
+  static propTypes = {
+    data: PropTypes.object,
+    setPrimaryItem: PropTypes.func
   }
 
+  static defaultProps = {
+    data: {},
+    setPrimaryItem: () => {}
+  }
+
+  getColors = (colors, primaryColor, itemId) => colors.map((color, index) => {
+    const DEFAULT_CLASS_NAME = 'item--color__block';
+    let className = DEFAULT_CLASS_NAME;
+
+
+    if (color.toLowerCase() === primaryColor.toLowerCase()) {
+      className = `${DEFAULT_CLASS_NAME} selected`;
+    }
+
+    return <span
+      key={index}
+      className={className}
+      style={{ backgroundColor: convertColorNameToHex(color) }}
+      onClick={() => this.props.setPrimaryItem(color, itemId)}
+    >
+    </span>;
+  });
+
   render() {
-    const { id, price, category, name, owner, primaryImageUrl, primaryColor, colors } = this.props.data;
+    const {
+      id, price, category, name, owner, primaryImageUrl, primaryColor, colors
+    } = this.props.data;
 
     return (
       <div key={id} className='products__item'>
@@ -58,9 +69,7 @@ class Product extends Component {
   }
 }
 
-const mapStateToProps = ({ products }) => ({
-  items: products.items
-});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
   setPrimaryItem: (color, itemId) => dispatch(setPrimaryItem(color, itemId))

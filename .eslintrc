@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    },
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": [ "react"] ,
+  "extends": ["react-app","eslint:recommended", "plugin:react/recommended", "airbnb-base"],
+  "globals": {
+    "jest": true,
+    "describe": true,
+    "beforeEach": true,
+    "it": true,
+    "expect": true
+  },
+  "rules": {
+    "comma-dangle": "off",
+    "implicit-arrow-linebreak": "off",
+    "consistent-return":"off",
+    "max-len": "off"
+  }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Collapsible from 'react-collapsible';
 
 import { selectCategory } from '../../redux/actions/filters';
@@ -8,11 +9,21 @@ const DEFAULT_CLASS_NAME = 'categories__list-item';
 const CATEGORIES_LIST = ['Athletic', 'Fashion Sneakers', 'Boots', 'Oxfords'];
 
 class Categories extends Component {
+  static propTypes = {
+    selectedCategories: PropTypes.array,
+    selectCategory: PropTypes.func
+  }
+
+  static defaultProps = {
+    selectedCategories: [],
+    selectCategory: () => {}
+  }
+
   state = {
     categoriesOpened: false
   }
 
-  toggleCategory = category => {
+  toggleCategory = (category) => {
     this.props.selectCategory(category);
   }
 

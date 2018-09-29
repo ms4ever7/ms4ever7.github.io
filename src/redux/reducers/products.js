@@ -4,7 +4,7 @@ const initialState = {
   items: []
 };
 
-const products = (state = initialState, action) => {
+const products = (state = initialState, action = {}) => {
   switch (action.type) {
     case FETCH_PRODUCTS:
       return {
@@ -15,13 +15,14 @@ const products = (state = initialState, action) => {
       const { selectedColor, selectedItemId } = action;
       const itemToUpdate = itemsToUpdate.find(item => item.id === selectedItemId);
       const appropriateItem = itemToUpdate.similarProducts.find(({ color }) =>
-        color.toLowerCase() === selectedColor.toLowerCase());
+        color.toLowerCase() === selectedColor.toLowerCase())
 
       itemToUpdate.primaryColor = appropriateItem.color;
       itemToUpdate.primaryImageUrl = appropriateItem.imageUrl;
       itemToUpdate.price = appropriateItem.price;
 
       return {
+        ...initialState,
         items: [...itemsToUpdate]
       };
     default:

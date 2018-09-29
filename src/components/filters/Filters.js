@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Categories from './Categories';
 import Colors from './Colors';
@@ -7,6 +8,14 @@ import Colors from './Colors';
 import { resetFilters } from '../../redux/actions/filters';
 
 class Filters extends Component {
+  static propTypes = {
+    resetFilters: PropTypes.func
+  }
+
+  static defaultProps = {
+    resetFilters: () => {} //NOTE: mode empty function to utils
+  }
+
   render() {
     return (
       <div className='filters__wrapper layout-column layout-align-start-start'>
