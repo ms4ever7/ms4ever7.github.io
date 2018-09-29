@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { fetchProducts } from '../redux/actions/products';
+import { fetchProducts, setPrimaryItem } from '../redux/actions/products';
 
 import NoResultsFound from './NoResultsFound';
 import Product from './Product';
@@ -12,7 +12,8 @@ class Products extends Component {
     products: PropTypes.array,
     selectedCategories: PropTypes.array,
     selectedColors: PropTypes.array,
-    fetchProducts: PropTypes.func
+    fetchProducts: PropTypes.func,
+    setPrimaryItem: PropTypes.func
   }
 
   static defaultProps = {
@@ -43,18 +44,17 @@ class Products extends Component {
 
 
   get items() {
-    const { selectedCategories, selectedColors } = this.props;
+    const { selectedCategories, selectedColors, setPrimaryItem } = this.props;
 
     if (!this.appropriateItems.length) {
       return <NoResultsFound selectedCategories={selectedCategories} selectedColors={selectedColors} />;
     }
 
-    return this.appropriateItems.map(item => <Product key={item.id} data={item} />);
+    return this.appropriateItems.map(item => <Product key={item.id} data={item} setPrimaryItem={setPrimaryItem} />);
   }
 
   render() {
     const { products } = this.props;
-
 
     if (!products || !products.length) {
       return null;
@@ -75,7 +75,8 @@ const mapStateToProps = ({ products, filters }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProducts: () => dispatch(fetchProducts())
+  fetchProducts: () => dispatch(fetchProducts()),
+  setPrimaryItem: (item, id) => dispatch(setPrimaryItem(item, id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

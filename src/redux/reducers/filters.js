@@ -8,10 +8,10 @@ const initialState = {
 const filters = (state = initialState, action = {}) => {
   switch (action.type) {
     case SET_PRODUCT_CATEGORY:
-      let { selectedCategories } = state;
+      const { selectedCategories } = state;
 
       if (selectedCategories.includes(action.category)) {
-        return { 
+        return {
           ...state,
           selectedCategories: selectedCategories.filter(category => category !== action.category)
         };
@@ -22,10 +22,10 @@ const filters = (state = initialState, action = {}) => {
         selectedCategories: [...state.selectedCategories, action.category]
       };
     case SET_PRODUCT_COLOR:
-      let { selectedColors } = state;
+      const { selectedColors } = state;
 
       if (selectedColors.includes(action.color)) {
-        return { 
+        return {
           ...state,
           selectedColors: selectedColors.filter(color => color !== action.color)
         };
@@ -44,6 +44,6 @@ const filters = (state = initialState, action = {}) => {
     default:
       return state;
   }
-}
+};
 
 export default filters;

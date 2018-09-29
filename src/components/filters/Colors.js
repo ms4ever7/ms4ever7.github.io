@@ -6,7 +6,7 @@ import Collapsible from 'react-collapsible';
 import { selectColor } from '../../redux/actions/filters';
 
 const DEFAULT_CLASS_NAME = 'colors__list-item';
-const COLORS_LIST = ['White', 'Black', 'Red', 'Grey', 'LightSeaGreen', 'Beige', 'Yellow', 'SpringGreen', 'Blue', 'DarkGreen', 'DarkBlue', 'Orange', 'Pink', "Brown", "Wheat" ]
+const COLORS_LIST = ['White', 'Black', 'Red', 'Grey', 'LightSeaGreen', 'Beige', 'Yellow', 'SpringGreen', 'Blue', 'DarkGreen', 'DarkBlue', 'Orange', 'Pink', 'Brown', 'Wheat'];
 
 class Colors extends Component {
   static propTypes = {
@@ -32,15 +32,15 @@ class Colors extends Component {
     return <div className='colors__wrapper--trigger layout layout-align-space-between-end'>
       <div className='colors__list-title'>Colors:</div>
       <div>{iconToShow}</div>
-    </div>
+    </div>;
   }
 
   get colors() {
     const { selectedColors } = this.props;
 
-    return <Collapsible 
+    return <Collapsible
       trigger={this.triggerElement}
-      onOpen={() => this.setState({ colorsOpened: true })} 
+      onOpen={() => this.setState({ colorsOpened: true })}
       onClose={() => this.setState({ colorsOpened: false })}
     >
       <div className='layout layout-wrap'>
@@ -48,7 +48,7 @@ class Colors extends Component {
           let className = DEFAULT_CLASS_NAME;
 
           if (selectedColors && selectedColors.length && selectedColors.includes(color)) {
-            className = `${DEFAULT_CLASS_NAME} list-item--selected`
+            className = `${DEFAULT_CLASS_NAME} list-item--selected`;
           }
 
           return <span
@@ -57,10 +57,10 @@ class Colors extends Component {
             style={{ backgroundColor: color }}
             onClick={() => this.toggleColor(color)}
           >
-          </span>
+          </span>;
         })}
       </div>
-    </Collapsible>
+    </Collapsible>;
   }
 
   render() {

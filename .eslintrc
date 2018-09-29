@@ -13,7 +13,7 @@
     "es6": true
   },
   "plugins": [ "react"] ,
-  "extends": ["react-app","eslint:recommended", "plugin:react/recommended", "airbnb-base"],
+  "extends": ["react-app", "eslint:recommended", "plugin:react/recommended", "airbnb-base"],
   "globals": {
     "jest": true,
     "describe": true,
@@ -25,6 +25,12 @@
     "comma-dangle": "off",
     "implicit-arrow-linebreak": "off",
     "consistent-return":"off",
-    "max-len": "off"
+    "max-len": "off",
+    "no-case-declarations":"off",
+    "no-tabs":"off",
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "import/no-unresolved": "off",
+    "no-shadow":"off"
   }
 }

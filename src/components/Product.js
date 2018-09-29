@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import convertColorNameToHex from 'convert-css-color-name-to-hex';
 
-import { setPrimaryItem } from '../redux/actions/products';
 
 class Product extends Component {
   static propTypes = {
@@ -35,9 +33,10 @@ class Product extends Component {
   });
 
   render() {
+    const { data } = this.props;
     const {
       id, price, category, name, owner, primaryImageUrl, primaryColor, colors
-    } = this.props.data;
+    } = data;
 
     return (
       <div key={id} className='products__item'>
@@ -69,10 +68,4 @@ class Product extends Component {
   }
 }
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = dispatch => ({
-  setPrimaryItem: (color, itemId) => dispatch(setPrimaryItem(color, itemId))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default Product;

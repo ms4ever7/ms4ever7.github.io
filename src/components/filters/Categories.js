@@ -34,22 +34,22 @@ class Categories extends Component {
     return <div className='categories__wrapper--trigger layout layout-align-space-between-end'>
       <div className='categories__list-title'>Categories:</div>
       <div>{iconToShow}</div>
-    </div>
+    </div>;
   }
 
   get categories() {
     const { selectedCategories } = this.props;
-    
-    return <Collapsible 
+
+    return <Collapsible
       trigger={this.triggerElement}
-      onOpen={() => this.setState({ categoriesOpened: true })} 
+      onOpen={() => this.setState({ categoriesOpened: true })}
       onClose={() => this.setState({ categoriesOpened: false })}
       >
       {CATEGORIES_LIST.map((category, index) => {
         let className = DEFAULT_CLASS_NAME;
 
         if (selectedCategories && selectedCategories.length && selectedCategories.includes(category)) {
-          className = `${DEFAULT_CLASS_NAME} list-item--selected`
+          className = `${DEFAULT_CLASS_NAME} list-item--selected`;
         }
 
         return <div
@@ -57,9 +57,9 @@ class Categories extends Component {
           className={className}
           onClick={() => this.toggleCategory(category)}>
           {category}
-        </div>
+        </div>;
       })}
-    </Collapsible>
+    </Collapsible>;
   }
 
   render() {

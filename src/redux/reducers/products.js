@@ -11,23 +11,22 @@ const products = (state = initialState, action = {}) => {
         items: [...state.items, ...action.items]
       };
     case SET_PRIMARY_ITEM:
-      const itemsToUpdate = state.items;
+      const itemsToUpdate = [...state.items];
       const { selectedColor, selectedItemId } = action;
       const itemToUpdate = itemsToUpdate.find(item => item.id === selectedItemId);
       const appropriateItem = itemToUpdate.similarProducts.find(({ color }) =>
-        color.toLowerCase() === selectedColor.toLowerCase())
+        color.toLowerCase() === selectedColor.toLowerCase());
 
       itemToUpdate.primaryColor = appropriateItem.color;
       itemToUpdate.primaryImageUrl = appropriateItem.imageUrl;
       itemToUpdate.price = appropriateItem.price;
 
       return {
-        ...initialState,
         items: [...itemsToUpdate]
       };
     default:
       return state;
   }
-}
+};
 
 export default products;

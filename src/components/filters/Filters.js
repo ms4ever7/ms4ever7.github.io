@@ -13,7 +13,7 @@ class Filters extends Component {
   }
 
   static defaultProps = {
-    resetFilters: () => {} //NOTE: mode empty function to utils
+    resetFilters: () => {}
   }
 
   render() {
