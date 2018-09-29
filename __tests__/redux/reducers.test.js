@@ -1,35 +1,36 @@
 import { Reducer } from 'redux-testkit';
-import Immutable from 'seamless-immutable';
 
 import products from '../../src/redux/reducers/products';
 import filters from '../../src/redux/reducers/filters';
-import { FETCH_PRODUCTS, SET_PRIMARY_ITEM, SET_PRODUCT_CATEGORY, SET_PRODUCT_COLOR, RESET_ALL_FILTERS } from '../../src/redux/actions/actionTypes';
+import {
+  FETCH_PRODUCTS, SET_PRODUCT_CATEGORY, SET_PRODUCT_COLOR, RESET_ALL_FILTERS
+} from '../../src/redux/actions/actionTypes';
 
-let mockItems = [
+const mockItems = [
   {
-    id: "id",
-    price: "$67.94",
-    category: "Athletic",
-    name: "Yeezy Boost",
-    owner: "Adidas",
-    colors: [ "black", "red", "grey" ],
-    primaryImageUrl: "test",
-    primaryColor: "Red",
+    id: 'id',
+    price: '$67.94',
+    category: 'Athletic',
+    name: 'Yeezy Boost',
+    owner: 'Adidas',
+    colors: ['black', 'red', 'grey'],
+    primaryImageUrl: 'test',
+    primaryColor: 'Red',
     similarProducts: [
       {
-        price: "$67.94",
-        imageUrl: "test",
-        color: "Black"
+        price: '$67.94',
+        imageUrl: 'test',
+        color: 'Black'
       }
     ]
   }
 ];
 
 const initialProductsState = { items: [] };
-const initialFiltersState = { 
+const initialFiltersState = {
   selectedCategories: [],
   selectedColors: []
-}
+};
 
 describe('Reducers', () => {
   it('products reducers should have initial state', () => {
@@ -65,7 +66,7 @@ describe('Reducers', () => {
     const action = { type: SET_PRODUCT_CATEGORY, category: 'shoes' };
 
     Reducer(filters).withState({ ...initialFiltersState, selectedCategories: ['shoes'] }).expect(action).toReturnState({ ...initialFiltersState });
-  })
+  });
 
   it('should store filtered colors', () => {
     const action = { type: SET_PRODUCT_COLOR, color: 'red' };
@@ -85,5 +86,4 @@ describe('Reducers', () => {
 
     Reducer(filters).expect(action).toReturnState({ ...initialFiltersState });
   });
-  
 });
