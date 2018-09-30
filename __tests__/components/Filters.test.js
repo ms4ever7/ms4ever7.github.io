@@ -35,15 +35,6 @@ describe('Feed', () => {
     expect(context.contains(<Categories />)).toBe(true);
     expect(context.contains(<Colors />)).toBe(true);
   });
-
-  it('has rendered reset button', () => {
-    const wrapper = shallow(<Filters />,
-      {
-        context: { store: mockStore(fulfillProps()) }
-      });
-
-    expect(wrapper.find('.filters__reset-button')).to.have.lengthOf(1);
-  });
 });
 
 const fulfillProps = (props = {}) => ({

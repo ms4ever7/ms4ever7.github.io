@@ -24,33 +24,6 @@ describe('Products', () => {
 
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
-
-  it('is null when no data has been passed', () => {
-    const items = [{
-      id: 'id',
-      price: '$67.94',
-      category: 'Athletic',
-      name: 'Yeezy Boost',
-      owner: 'Adidas',
-      colors: ['black', 'red', 'grey'],
-      primaryImageUrl: 'test',
-      primaryColor: 'Red',
-      similarProducts: [
-        {
-          price: '$67.94',
-          imageUrl: 'test',
-          color: 'Black'
-        }
-      ]
-    }];
-    const wrapper = shallow(<Products />, {
-      context: { store: mockStore(fulfillProps({ items })) }
-    });
-
-    const render = wrapper.dive();
-
-    expect(render.find('.productItem').exists()).toBeTruthy();
-  });
 });
 
 

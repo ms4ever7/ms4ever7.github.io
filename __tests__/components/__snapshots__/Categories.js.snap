@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories should render correctly 1`] = `
+<Categories
+  selectCategory={[Function]}
+  selectedCategories={Array []}
+/>
+`;

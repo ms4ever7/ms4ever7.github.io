@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Colors should render correctly 1`] = `
+<Colors
+  selectColor={[Function]}
+  selectedColors={Array []}
+/>
+`;
