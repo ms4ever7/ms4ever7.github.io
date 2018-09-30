@@ -47,10 +47,16 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "lint": "eslint \"src/*.js\"",
     "test": "jest __tests__",
     "test:watch": "jest --watch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build"
+  },
+  "husky": {
+    "hooks": {  
+      "pre-commit": "npm run lint"
+    }
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -72,7 +78,9 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^2.0.0",
+    "husky": "^1.0.1",
     "jest": "^23.6.0",
+    "jsdom": "^12.1.0",
     "node-sass": "^4.9.3",
     "react-addons-test-utils": "^15.6.2",
     "redux-mock-store": "^1.5.3",

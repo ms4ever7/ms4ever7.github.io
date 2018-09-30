@@ -50,7 +50,7 @@ class Products extends Component {
       return <NoResultsFound selectedCategories={selectedCategories} selectedColors={selectedColors} />;
     }
 
-    return this.appropriateItems.map(item => <Product key={item.id} data={item} setPrimaryItem={setPrimaryItem} />);
+    return this.appropriateItems.map(item => <Product key={item.id} data={item} setPrimaryItem={setPrimaryItem} className='productItem' />);
   }
 
   render() {

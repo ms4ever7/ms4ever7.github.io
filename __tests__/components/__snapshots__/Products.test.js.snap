@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Products should render correctly 1`] = `
+<Products
+  fetchProducts={[Function]}
+  products={Array []}
+  selectedCategories={Array []}
+  selectedColors={Array []}
+  setPrimaryItem={[Function]}
+/>
+`;
