@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Roman Blyztsiv, software engineer. Full-stack and React Native, based in Warsaw.">
+<title>Roman Blyztsiv CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Layout: a ledger. Each section has a mono label in a left rail and its content in a wide column; the rail stacks above the content on a phone. */
+  :root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --ink: #11151c;
+    --muted: #555d6b;
+    --line: #dde0e6;
+    --accent: #2437d6;
+    --accent-ink: #ffffff;
+    --accent-soft: #e6e9fb;
+    --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1016;
+      --surface: #151a23;
+      --ink: #eceff4;
+      --muted: #9aa3b2;
+      --line: #262d3a;
+      --accent: #8d9cff;
+      --accent-ink: #0d1016;
+      --accent-soft: #1b2140;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1016;
+    --surface: #151a23;
+    --ink: #eceff4;
+    --muted: #9aa3b2;
+    --line: #262d3a;
+    --accent: #8d9cff;
+    --accent-ink: #0d1016;
+    --accent-soft: #1b2140;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    padding-inline: 20px;
+    padding-block: 0 56px;
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 920px; margin-inline: auto; }
+
+  /* top bar */
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+  .bar .mark { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; }
+  .bar nav { display: flex; gap: 20px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 13px; }
+  .bar nav a { text-decoration: none; color: var(--muted); }
+  .bar nav a:hover { color: var(--ink); }
+
+  /* hero */
+  .hero { padding-block: 72px 56px; }
+  .eyebrow { font-family: var(--font-mono); font-size: 13px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.6rem, 8vw, 4.75rem); line-height: 1; letter-spacing: -0.03em; margin: 14px 0 12px; text-wrap: balance; }
+  .role { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.15rem, 3vw, 1.5rem); color: var(--accent); margin: 0 0 24px; }
+  .lead { max-width: 60ch; font-size: 1.125rem; color: var(--ink); margin: 0 0 28px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
+  .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--ink); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn:hover { filter: brightness(1.08); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+  .tags li { font-family: var(--font-mono); font-size: 12.5px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--muted); }
+
+  /* sections: label rail + content */
+  section.row { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 16px 40px; padding-block: 44px; border-top: 1px solid var(--line); }
+  .label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
+  h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 12px; text-wrap: balance; }
+  p { margin: 0 0 14px; max-width: 65ch; }
+  .muted { color: var(--muted); }
+
+  /* featured */
+  .featured { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .feat { display: flex; flex-direction: column; gap: 8px; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; text-decoration: none; min-height: 150px; }
+  .feat:hover { border-color: var(--accent); }
+  .feat strong { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: -0.01em; }
+  .feat span { color: var(--muted); font-size: 14.5px; }
+  .feat .kind { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* at a glance */
+  .glance { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 24px; margin: 22px 0 0; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; max-width: 520px; }
+  .glance dt { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; padding-top: 3px; }
+  .glance dd { margin: 0; }
+
+  /* projects */
+  .project { padding-bottom: 36px; margin-bottom: 36px; border-bottom: 1px solid var(--line); }
+  .project:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
+  .meta .state { color: var(--accent); }
+  .sub { font-size: 1.05rem; color: var(--muted); margin: 0 0 16px; }
+  ul.points { margin: 0 0 18px; padding-left: 20px; max-width: 65ch; }
+  ul.points li { margin-bottom: 8px; padding-left: 4px; }
+  ul.points li::marker { color: var(--accent); }
+  .note { display: inline-block; font-family: var(--font-mono); font-size: 12.5px; padding: 4px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--ink); margin-bottom: 16px; }
+
+  /* experience */
+  .job { padding-bottom: 32px; margin-bottom: 32px; border-bottom: 1px solid var(--line); }
+  .job:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+  .job h2 { font-size: 1.3rem; }
+  .job h3 { font-family: var(--font-body); font-size: 1rem; font-weight: 600; margin: 18px 0 8px; }
+  .job .sub { margin-bottom: 4px; }
+
+  /* skills */
+  .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 32px; margin: 0; }
+  .skills div { min-width: 0; }
+  .skills dt { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .skills dd { margin: 0; }
+
+  /* contact */
+  .contact { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 24px; margin: 0 0 22px; }
+  .contact dt { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; padding-top: 3px; }
+  .contact dd { margin: 0; }
+  .mail { user-select: all; word-break: break-all; }
+  .copy { font: inherit; font-family: var(--font-mono); font-size: 12.5px; margin-left: 8px; min-height: 32px; padding: 0 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); cursor: pointer; }
+  .copy:hover { border-color: var(--accent); }
+  footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 28px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+  footer a { text-decoration: none; }
+
+  @media (max-width: 760px) {
+    .hero { padding-block: 44px 40px; }
+    section.row { grid-template-columns: minmax(0, 1fr); padding-block: 32px; }
+    .label { padding-top: 0; }
+    .featured { grid-template-columns: minmax(0, 1fr); }
+    .feat { min-height: 0; }
+    .skills { grid-template-columns: minmax(0, 1fr); }
+    .glance, .contact { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .glance dd, .contact dd { margin-bottom: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap" id="top">
+  <header class="bar">
+    <span class="mark">RB / CV</span>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">Warsaw, Poland</div>
+      <h1>Roman Blyztsiv</h1>
+      <p class="role">Software Engineer, Full-Stack and React Native</p>
+      <p class="lead">Nine years of shipping production web and mobile apps in e-commerce, healthcare and smart-home. I own features from the screen to the API and the data behind it, and I build my own products on the side.</p>
+      <div class="actions">
+        <a class="btn primary" href="#experience">See experience</a>
+        <a class="btn ghost" href="#projects">Personal projects</a>
+      </div>
+      <ul class="tags" aria-label="Main technologies">
+        <li>TypeScript</li>
+        <li>React Native</li>
+        <li>Expo</li>
+        <li>Next.js</li>
+        <li>NestJS</li>
+        <li>PostgreSQL</li>
+      </ul>
+    </div>
+
+    <section class="row" id="work">
+      <div class="label">Personal work</div>
+      <div class="featured">
+        <a class="feat" href="#hourfolio">
+          <span class="kind">Mobile app</span>
+          <strong>Hourfolio</strong>
+          <span>A portfolio for your time. Every hobby is an asset and hours are the currency.</span>
+        </a>
+        <a class="feat" href="#onyx">
+          <span class="kind">Web3</span>
+          <strong>Onyx</strong>
+          <span>A DEX aggregator with Uniswap math implemented by hand, across eight chains.</span>
+        </a>
+        <a class="feat" href="#creature">
+          <span class="kind">Quant</span>
+          <strong>Magical Creature</strong>
+          <span>A systematic crypto strategy with a daily bot and a research backtester.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="row" id="about">
+      <div class="label">About</div>
+      <div>
+        <p>I am a full-stack engineer who works mostly in React, Next.js and React Native, with Node.js and NestJS behind them. I am comfortable in regulated, compliance-driven settings, including a HIPAA-adjacent healthcare app where personal health data is scrubbed from error reports.</p>
+        <p>I work with Claude Code every day, with custom skills and MCP integrations for delivery, testing and review, and I keep the checks that make that safe: tests around the logic that matters and small, reviewed changes. On my own projects I like to build the hard part without the shortcut first.</p>
+        <dl class="glance">
+          <dt>Experience</dt><dd>9+ years, since 2016</dd>
+          <dt>Focus</dt><dd>React Native (Expo), Next.js, NestJS</dd>
+          <dt>Languages</dt><dd>English (upper-intermediate), Ukrainian (native), Polish (upper-intermediate to advanced)</dd>
+          <dt>Education</dt><dd>BSc and MSc, Management of Organizations, Lviv Polytechnic</dd>
+          <dt>Location</dt><dd>Warsaw, Poland</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="row" id="projects">
+      <div class="label">Personal projects</div>
+      <div>
+        <article class="project" id="hourfolio">
+          <div class="meta"><span class="state">In TestFlight</span><span>2026</span><span>iOS first</span></div>
+          <h2>Hourfolio</h2>
+          <p class="sub">A portfolio for your time, built for people with many hobbies.</p>
+          <ul class="points">
+            <li>Every hobby is an asset and hours are the currency. Capital never goes down, momentum fades slowly at a rate set by how often you do the thing, and there are no streaks and no red numbers.</li>
+            <li>A weekly planner spreads your goals over the days you have free, with animated goal scenes and a share card for a finished week.</li>
+            <li>Staging and production builds ship side by side to invited testers. Small fixes go out over the air without a new build or App Review.</li>
+            <li>Local-first with no backend. The domain logic is pure and unit-tested, screens are covered by end-to-end flows, and every string exists in English, Ukrainian and Polish.</li>
+          </ul>
+          <ul class="tags" aria-label="Hourfolio stack">
+            <li>React Native</li><li>Expo</li><li>expo-router</li><li>Reanimated</li><li>Zustand</li><li>MMKV</li><li>EAS Build and Update</li><li>Jest</li><li>Maestro</li>
+          </ul>
+        </article>
+
+        <article class="project" id="onyx">
+          <div class="meta"><span class="state">Learning project</span><span>Since 2025</span><span>Web</span></div>
+          <h2>Onyx</h2>
+          <p class="sub">A DEX aggregator where the protocol math is written by hand.</p>
+          <ul class="points">
+            <li>Quotes for Uniswap V2 come from the constant-product formula applied to pool reserves, with no SDK in between. Uniswap V3 tick and price math is in progress.</li>
+            <li>Eight EVM chains, token search with balances, allowance checks before approvals, slippage settings, transaction status, and ETH and wrapped ETH handled in one flow.</li>
+            <li>Started as a way to understand how AMMs price a trade, so the interesting part is the quote engine, not the interface.</li>
+          </ul>
+          <ul class="tags" aria-label="Onyx stack">
+            <li>Next.js</li><li>TypeScript</li><li>viem</li><li>wagmi</li><li>Tailwind CSS</li>
+          </ul>
+        </article>
+
+        <article class="project" id="creature">
+          <div class="meta"><span class="state">Running daily</span><span>Since 2025</span><span>Private</span></div>
+          <h2>Magical Creature</h2>
+          <p class="sub">A rules-based crypto trading system, with its own research lab.</p>
+          <span class="note">Private project. The code, parameters and results are not shared.</span>
+          <ul class="points">
+            <li>A scheduled job rebalances a rotating universe of liquid coins once a day, then sends a report to Telegram. The universe is rebuilt every month from market rankings and limited to what the exchange can actually trade.</li>
+            <li>Trend-following signals (a moving-average momentum view and a breakout view) are blended into one forecast per coin. Position sizes are targeted to volatility, and a no-trade band keeps small drifts from turning into fees.</li>
+            <li>A separate research repository holds the backtester. It imports the production strategy module instead of copying it, so a backtest runs exactly the code that trades.</li>
+            <li>A shadow replay rebuilds the real account day by day and compares what the bot did with what the model says it should have done.</li>
+          </ul>
+          <ul class="tags" aria-label="Magical Creature stack">
+            <li>TypeScript</li><li>Node.js</li><li>Docker</li><li>Fly.io</li><li>Vite</li><li>Chart.js</li><li>Backtesting</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="row" id="experience">
+      <div class="label">Experience</div>
+      <div>
+        <article class="job">
+          <div class="meta"><span class="state">April 2022 to present</span></div>
+          <h2>Software Engineer, DataArt Solutions</h2>
+          <p class="sub">Client projects in e-commerce and healthcare.</p>
+          <h3>Ocado, online groceries, Supermarket Savings and M&amp;S</h3>
+          <ul class="points">
+            <li>Delivered customer-facing features for several retail brands on React, Next.js, TypeScript and RxJS.</li>
+          </ul>
+          <h3>Onsera Engage, React Native engineer on a healthcare weight-management platform</h3>
+          <ul class="points">
+            <li>Owned core member-facing features end to end in a HIPAA-adjacent Expo app, from the screen through the NestJS backend, including a Postgres read cache synced from an external EHR system.</li>
+            <li>Built the backend behind those features: endpoints and services, error reporting with personal health data scrubbed, eligibility rules, and messaging with read receipts.</li>
+            <li>Led several full-screen redesigns from Figma specs and made the app more reliable with an offline-first design: a persisted query cache, retries and skeleton states.</li>
+            <li>Covered features with Jest, React Native Testing Library and Maestro end-to-end tests, and used Claude Code with custom skills and MCP integrations for delivery and review.</li>
+          </ul>
+          <ul class="tags" aria-label="Stack">
+            <li>React Native</li><li>Expo</li><li>TypeScript</li><li>TanStack Query</li><li>Zustand</li><li>NestJS</li><li>PostgreSQL</li><li>Maestro</li><li>GitHub Actions</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="meta"><span>April 2020 to April 2022</span></div>
+          <h2>JavaScript Developer, Neofonie Mobile</h2>
+          <ul class="points">
+            <li>Shipped features for a smart-home app with React and TypeScript, including offline-first support through service workers.</li>
+            <li>Built web applications for German newspapers and pharmacies with Vue.js, including estimates and technical investigations.</li>
+            <li>Contributed to a Flutter app for smart-home control.</li>
+          </ul>
+          <ul class="tags" aria-label="Stack"><li>Vue.js</li><li>React</li><li>TypeScript</li><li>Angular</li><li>Flutter</li></ul>
+        </article>
+
+        <article class="job">
+          <div class="meta"><span>September 2019 to May 2020</span></div>
+          <h2>Full-Stack Developer, self-employed</h2>
+          <ul class="points">
+            <li>Built Artists &amp; Angels, a platform that connects artists who teach with people who want to learn.</li>
+          </ul>
+          <ul class="tags" aria-label="Stack"><li>React</li><li>TypeScript</li><li>Node.js</li><li>NestJS</li><li>PostgreSQL</li><li>TypeORM</li><li>AWS</li></ul>
+        </article>
+
+        <article class="job">
+          <div class="meta"><span>December 2018 to April 2020</span></div>
+          <h2>Full-Stack Developer, Move Closer</h2>
+          <ul class="points">
+            <li>Built Site Circle, a platform for construction companies to manage workers and processes.</li>
+            <li>Developed Cocolocals, a mobile app built with Cordova and React.</li>
+            <li>Shipped features for HypeMe, including Apple Pay, Google Pay and PayU payments.</li>
+            <li>Redesigned landing pages and built components for Packhelp with React and TypeScript.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="meta"><span>June to December 2018</span></div>
+          <h2>Full-Stack Developer, MEV</h2>
+          <ul class="points">
+            <li>Built a mobile marketplace app for the legal buying and selling of cannabis products.</li>
+          </ul>
+          <ul class="tags" aria-label="Stack"><li>React Native</li><li>Node.js</li></ul>
+        </article>
+
+        <article class="job">
+          <div class="meta"><span>February 2016 to June 2018</span></div>
+          <h2>JavaScript Developer, Teamvoy</h2>
+          <ul class="points">
+            <li>Built desktop applications that convert GIF files to video and raster images to vector graphics.</li>
+            <li>Built a transfer system for banking operations and a system for managing referral operations.</li>
+            <li>Built Wedspire, a wedding-planning platform.</li>
+          </ul>
+          <ul class="tags" aria-label="Stack"><li>Node.js</li><li>Electron</li><li>React</li><li>Ember</li><li>Vue</li><li>MongoDB</li><li>PostgreSQL</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="row" id="skills">
+      <div class="label">Skills</div>
+      <dl class="skills">
+        <div><dt>Languages</dt><dd>JavaScript, TypeScript, Node.js, Flutter (basic), Solidity (basic)</dd></div>
+        <div><dt>Frontend</dt><dd>React, Next.js, React Native (Expo), Vue, Angular, EmberJS, Redux, MobX, Zustand, RxJS, TanStack Query</dd></div>
+        <div><dt>Styling</dt><dd>SASS, LESS, PostCSS, Styled Components, Bootstrap</dd></div>
+        <div><dt>Backend and data</dt><dd>Node.js, NestJS, Express, REST and JSON APIs, PostgreSQL, MongoDB, TypeORM, SQL</dd></div>
+        <div><dt>Testing</dt><dd>Jest, React Native Testing Library, Maestro end-to-end, unit and end-to-end testing</dd></div>
+        <div><dt>Cloud and DevOps</dt><dd>AWS (Amplify, S3), Docker, GitLab CI, GitHub Actions, EAS Build and Update, Terraform (basic)</dd></div>
+        <div><dt>AI-assisted engineering</dt><dd>Claude Code with custom skills and MCP servers for delivery, testing and code review</dd></div>
+        <div><dt>Practices</dt><dd>Agile and Scrum, code review, mentoring, i18next localization</dd></div>
+      </dl>
+    </section>
+
+    <section class="row" id="contact">
+      <div class="label">Contact</div>
+      <div>
+        <h2>Let's talk</h2>
+        <dl class="contact">
+          <dt>Email</dt>
+          <dd><span class="mail" id="mail">roman.bliztsv@gmail.com</span> <button type="button" class="copy" id="copy">Copy</button></dd>
+          <dt>GitHub</dt><dd><a href="https://github.com/ms4ever7">github.com/ms4ever7</a></dd>
+          <dt>Location</dt><dd>Warsaw, Poland</dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Roman Blyztsiv</span>
+    <a href="#top">Back to top</a>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copy');
+    var mail = document.getElementById('mail');
+    if (!btn || !mail) return;
+    function selectText() {
+      var r = document.createRange();
+      r.selectNodeContents(mail);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(r);
+    }
+    btn.addEventListener('click', function () {
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
+      try {
+        navigator.clipboard.writeText(mail.textContent.trim()).then(done, selectText);
+      } catch (e) { selectText(); }
+    });
+  })();
+</script>
+</body>
+</html>
