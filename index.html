@@ -14,11 +14,14 @@
     --bg: #f5f6f8;
     --surface: #ffffff;
     --ink: #11151c;
-    --muted: #555d6b;
+    --muted: #474f5c;
     --line: #dde0e6;
     --accent: #2437d6;
     --accent-ink: #ffffff;
     --accent-soft: #e6e9fb;
+    --t-indigo: #4a3fd0; --t-indigo-bg: #ecebfb; --t-indigo-line: #cfcbf5;
+    --t-teal: #0b7f7a; --t-teal-bg: #e1f3f1; --t-teal-line: #b8e0dc;
+    --t-amber: #a35a06; --t-amber-bg: #fbeed9; --t-amber-line: #efd3a5;
     --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
     --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -28,11 +31,14 @@
       --bg: #0d1016;
       --surface: #151a23;
       --ink: #eceff4;
-      --muted: #9aa3b2;
+      --muted: #aab2c0;
       --line: #262d3a;
       --accent: #8d9cff;
       --accent-ink: #0d1016;
       --accent-soft: #1b2140;
+      --t-indigo: #aea6ff; --t-indigo-bg: #1d1c3d; --t-indigo-line: #34316b;
+      --t-teal: #5fd6cc; --t-teal-bg: #0f2a29; --t-teal-line: #1d4b48;
+      --t-amber: #f2b45f; --t-amber-bg: #2b2012; --t-amber-line: #54401f;
       color-scheme: dark;
     }
   }
@@ -40,11 +46,14 @@
     --bg: #0d1016;
     --surface: #151a23;
     --ink: #eceff4;
-    --muted: #9aa3b2;
+    --muted: #aab2c0;
     --line: #262d3a;
     --accent: #8d9cff;
     --accent-ink: #0d1016;
     --accent-soft: #1b2140;
+    --t-indigo: #aea6ff; --t-indigo-bg: #1d1c3d; --t-indigo-line: #34316b;
+    --t-teal: #5fd6cc; --t-teal-bg: #0f2a29; --t-teal-line: #1d4b48;
+    --t-amber: #f2b45f; --t-amber-bg: #2b2012; --t-amber-line: #54401f;
     color-scheme: dark;
   }
 
@@ -93,13 +102,19 @@
   p { margin: 0 0 14px; max-width: 65ch; }
   .muted { color: var(--muted); }
 
+  /* tones: each personal project has its own color */
+  [data-tone="indigo"] { --tone: var(--t-indigo); --tone-bg: var(--t-indigo-bg); --tone-line: var(--t-indigo-line); }
+  [data-tone="teal"] { --tone: var(--t-teal); --tone-bg: var(--t-teal-bg); --tone-line: var(--t-teal-line); }
+  [data-tone="amber"] { --tone: var(--t-amber); --tone-bg: var(--t-amber-bg); --tone-line: var(--t-amber-line); }
+
   /* featured */
   .featured { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-  .feat { display: flex; flex-direction: column; gap: 8px; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; text-decoration: none; min-height: 150px; }
-  .feat:hover { border-color: var(--accent); }
-  .feat strong { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: -0.01em; }
-  .feat span { color: var(--muted); font-size: 14.5px; }
-  .feat .kind { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+  .feat { display: flex; flex-direction: column; gap: 8px; padding: 20px; background: var(--tone-bg); border: 1px solid var(--tone-line); border-radius: 14px; text-decoration: none; min-height: 168px; transition: transform .15s ease, border-color .15s ease; }
+  .feat:hover { border-color: var(--tone); transform: translateY(-2px); }
+  .feat strong { font-family: var(--font-display); font-size: 1.35rem; letter-spacing: -0.015em; color: var(--ink); }
+  .feat span { color: var(--ink); font-size: 14.5px; opacity: 0.82; }
+  .feat .kind { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--tone); letter-spacing: 0.05em; text-transform: uppercase; opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .feat { transition: none; } .feat:hover { transform: none; } }
 
   /* at a glance */
   .glance { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 24px; margin: 22px 0 0; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; max-width: 520px; }
@@ -107,15 +122,32 @@
   .glance dd { margin: 0; }
 
   /* projects */
-  .project { padding-bottom: 36px; margin-bottom: 36px; border-bottom: 1px solid var(--line); }
-  .project:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+  .project { padding: 28px; margin-bottom: 24px; background: var(--tone-bg); border: 1px solid var(--tone-line); border-radius: 18px; }
+  .project:last-child { margin-bottom: 0; }
+  .project h2 { color: var(--ink); }
   .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
-  .meta .state { color: var(--accent); }
-  .sub { font-size: 1.05rem; color: var(--muted); margin: 0 0 16px; }
-  ul.points { margin: 0 0 18px; padding-left: 20px; max-width: 65ch; }
-  ul.points li { margin-bottom: 8px; padding-left: 4px; }
-  ul.points li::marker { color: var(--accent); }
-  .note { display: inline-block; font-family: var(--font-mono); font-size: 12.5px; padding: 4px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--ink); margin-bottom: 16px; }
+  .meta .state { color: var(--tone, var(--accent)); font-weight: 500; }
+  .sub { font-size: 1.05rem; color: var(--muted); margin: 0 0 18px; }
+  ul.points { margin: 0 0 20px; padding-left: 20px; max-width: 65ch; }
+  ul.points li { margin-bottom: 10px; padding-left: 4px; }
+  ul.points li::marker { color: var(--tone, var(--accent)); }
+  .project .tags li { background: var(--surface); border-color: var(--tone-line); color: var(--ink); }
+  .note { display: inline-block; font-family: var(--font-mono); font-size: 12.5px; padding: 5px 10px; border-radius: 6px; background: var(--surface); border: 1px dashed var(--tone); color: var(--ink); margin-bottom: 18px; }
+
+  /* app screenshots */
+  .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 4px 0 24px; max-width: 640px; }
+  .shots figure { margin: 0; }
+  .shots img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--tone-line); box-shadow: 0 10px 24px rgba(30, 24, 90, 0.14); background: var(--surface); }
+  .shots figcaption { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+  /* strategy pipeline: shapes only, no numbers */
+  .flow { list-style: none; margin: 4px 0 8px; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; counter-reset: none; }
+  .flow li { position: relative; padding: 12px 12px 14px; background: var(--surface); border: 1px solid var(--tone-line); border-radius: 12px; font-size: 13.5px; line-height: 1.4; }
+  .flow li strong { display: block; font-family: var(--font-display); font-size: 1rem; margin-bottom: 4px; color: var(--ink); }
+  .flow li span { color: var(--muted); }
+  .flow li:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -15px; width: 12px; height: 12px; border-top: 2px solid var(--tone); border-right: 2px solid var(--tone); transform: translateY(-50%) rotate(45deg); }
+  .lab { margin: 0 0 22px; padding: 12px 14px; border: 1px dashed var(--tone); border-radius: 12px; font-size: 13.5px; background: transparent; }
+  .lab strong { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--tone); display: block; margin-bottom: 2px; }
 
   /* experience */
   .job { padding-bottom: 32px; margin-bottom: 32px; border-bottom: 1px solid var(--line); }
@@ -146,6 +178,10 @@
     .label { padding-top: 0; }
     .featured { grid-template-columns: minmax(0, 1fr); }
     .feat { min-height: 0; }
+    .project { padding: 20px; border-radius: 16px; }
+    .shots { gap: 8px; }
+    .flow { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .flow li:not(:last-child)::after { top: auto; bottom: -17px; right: auto; left: 24px; transform: rotate(135deg); }
     .skills { grid-template-columns: minmax(0, 1fr); }
     .glance, .contact { grid-template-columns: minmax(0, 1fr); gap: 2px; }
     .glance dd, .contact dd { margin-bottom: 10px; }
@@ -190,17 +226,17 @@
     <section class="row" id="work">
       <div class="label">Personal work</div>
       <div class="featured">
-        <a class="feat" href="#hourfolio">
+        <a class="feat" data-tone="indigo" href="#hourfolio">
           <span class="kind">Mobile app</span>
           <strong>Hourfolio</strong>
           <span>A portfolio for your time. Every hobby is an asset and hours are the currency.</span>
         </a>
-        <a class="feat" href="#onyx">
+        <a class="feat" data-tone="teal" href="#onyx">
           <span class="kind">Web3</span>
           <strong>Onyx</strong>
           <span>A DEX aggregator with Uniswap math implemented by hand, across eight chains.</span>
         </a>
-        <a class="feat" href="#creature">
+        <a class="feat" data-tone="amber" href="#creature">
           <span class="kind">Quant</span>
           <strong>Magical Creature</strong>
           <span>A systematic crypto strategy with a daily bot and a research backtester.</span>
@@ -226,10 +262,15 @@
     <section class="row" id="projects">
       <div class="label">Personal projects</div>
       <div>
-        <article class="project" id="hourfolio">
+        <article class="project" data-tone="indigo" id="hourfolio">
           <div class="meta"><span class="state">In TestFlight</span><span>2026</span><span>iOS first</span></div>
           <h2>Hourfolio</h2>
           <p class="sub">A portfolio for your time, built for people with many hobbies.</p>
+          <div class="shots">
+            <figure><img src="img/hourfolio-today.webp" width="640" height="1391" loading="lazy" alt="Hourfolio Today screen: hours logged today, one-tap log tiles and the plan for the week"><figcaption>Today</figcaption></figure>
+            <figure><img src="img/hourfolio-goals.webp" width="640" height="1391" loading="lazy" alt="Hourfolio Goals screen: weekly goals shown as growing scenes"><figcaption>Goals</figcaption></figure>
+            <figure><img src="img/hourfolio-plan-result.webp" width="640" height="1391" loading="lazy" alt="Hourfolio week plan: sessions spread over free days, each can be moved or removed"><figcaption>Week plan</figcaption></figure>
+          </div>
           <ul class="points">
             <li>Every hobby is an asset and hours are the currency. Capital never goes down, momentum fades slowly at a rate set by how often you do the thing, and there are no streaks and no red numbers.</li>
             <li>A weekly planner spreads your goals over the days you have free, with animated goal scenes and a share card for a finished week.</li>
@@ -241,7 +282,7 @@
           </ul>
         </article>
 
-        <article class="project" id="onyx">
+        <article class="project" data-tone="teal" id="onyx">
           <div class="meta"><span class="state">Learning project</span><span>Since 2025</span><span>Web</span></div>
           <h2>Onyx</h2>
           <p class="sub">A DEX aggregator where the protocol math is written by hand.</p>
@@ -255,11 +296,19 @@
           </ul>
         </article>
 
-        <article class="project" id="creature">
+        <article class="project" data-tone="amber" id="creature">
           <div class="meta"><span class="state">Running daily</span><span>Since 2025</span><span>Private</span></div>
           <h2>Magical Creature</h2>
           <p class="sub">A rules-based crypto trading system, with its own research lab.</p>
           <span class="note">Private project. The code, parameters and results are not shared.</span>
+          <ol class="flow" aria-label="Daily pipeline">
+            <li><strong>Market data</strong><span>Daily prices for a rotating universe</span></li>
+            <li><strong>Signals</strong><span>Trend and breakout views per coin</span></li>
+            <li><strong>Forecast</strong><span>One blended score per coin</span></li>
+            <li><strong>Sizing</strong><span>Volatility targeted, with a no-trade band</span></li>
+            <li><strong>Rebalance</strong><span>Orders placed, report sent</span></li>
+          </ol>
+          <div class="lab"><strong>Research lab</strong>A separate backtester imports the production strategy module, and a shadow replay checks it against the real account day by day.</div>
           <ul class="points">
             <li>A scheduled job rebalances a rotating universe of liquid coins once a day, then sends a report to Telegram. The universe is rebuilt every month from market rankings and limited to what the exchange can actually trade.</li>
             <li>Trend-following signals (a moving-average momentum view and a breakout view) are blended into one forecast per coin. Position sizes are targeted to volatility, and a no-trade band keeps small drifts from turning into fees.</li>
